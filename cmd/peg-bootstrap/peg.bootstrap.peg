@@ -9,7 +9,7 @@ Grammar		<- Spacing 'package' MustSpacing Identifier      { p.AddPackage(text) }
                            'Peg' Spacing Action              { p.AddState(text) }
                            Definition Definition* EndOfFile
 
-Import		<- 'import' Spacing ["] < ([a-zA-Z_/.]/'-')([a-zA-Z_/.]/'-')* > ["] Spacing { p.AddImport(text) }
+Import		<- 'import' Spacing ["] < ([a-zA-Z_/.]/'-')([a-zA-Z0-9_/.]/'-')* > ["] Spacing { p.AddImport(text) }
 
 Definition	<- Identifier 			{ p.AddRule(text) }
 		     LeftArrow Expression 	{ p.AddExpression() }
